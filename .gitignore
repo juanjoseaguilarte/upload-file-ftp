@@ -1,3 +1,5 @@
 *.img
 *.env
 .env
+*.jpeg
+*.pdf
