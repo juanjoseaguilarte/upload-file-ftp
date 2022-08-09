@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = file.originalname.split(".").pop();
-    cb(null, 'image.jpeg');
+    cb(null, "image.jpeg");
   },
 });
 const upload = multer({ storage });
@@ -35,11 +35,11 @@ app.post("/upload", upload.single("file"), (req, res) => {
   const Client = require("ftp");
   const { addAbortSignal } = require("stream");
   const c = new Client();
-    
+
   c.on("ready", function () {
     c.put(
       __dirname + "/upload/image.jpeg",
-      "/public/image.jpeg",
+      "/elrincondejuan-angular/assets/images/unafoto.jpg",
       function (err) {
         if (err) throw err;
         c.end();
@@ -47,8 +47,8 @@ app.post("/upload", upload.single("file"), (req, res) => {
     );
   });
 
-    c.connect(config);
-    res.redirect("/");
+  c.connect(config);
+  res.redirect("/");
 });
 
 app.listen(8080, () => console.log("Servidor arrancado"));
