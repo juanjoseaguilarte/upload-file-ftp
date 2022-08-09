@@ -4,6 +4,8 @@ const multer = require("multer");
 const sharp = require("sharp");
 const path = require("path");
 
+require("dotenv").config();
+
 const app = express();
 app.use(cors());
 
@@ -24,10 +26,10 @@ app.get("/", (req, res) => {
 
 app.post("/upload", upload.single("file"), (req, res) => {
   const config = {
-    host: "home496283475.1and1-data.host",
-    user: "u74894069",
-    password: "H7u91e53!!",
-    port: 21,
+    host: process.env.HOST,
+    user: process.env.USERS,
+    password: process.env.PASSWORD,
+    port: process.env.PORT,
   };
 
   const Client = require("ftp");
